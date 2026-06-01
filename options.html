@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Todo App Scrap Saver Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="card">
+        <div class="heading">
+          <h1>スクラップ保存先</h1>
+          <p>My Todo App のインスタンス URL と Developer API キーを設定します。</p>
+        </div>
+
+        <form id="settingsForm" class="form" novalidate>
+          <label class="field" for="appUrl">
+            <span>アプリケーションURL</span>
+            <input id="appUrl" type="url" placeholder="https://example.com" autocomplete="url" required />
+          </label>
+
+          <label class="field" for="apiKey">
+            <span>APIキー</span>
+            <input id="apiKey" type="password" placeholder="tdo_live_xxx" autocomplete="off" required />
+          </label>
+
+          <div class="actions">
+            <button id="saveButton" class="primary-button" type="submit">保存して確認</button>
+            <button id="revealButton" class="secondary-button" type="button">APIキーを表示</button>
+          </div>
+        </form>
+
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+
+        <section id="userCard" class="user-card hidden" aria-label="認証済みユーザー">
+          <img id="userImage" class="avatar" alt="" />
+          <div class="user-main">
+            <strong id="userName"></strong>
+            <span id="userEmail"></span>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save to Scraps</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section id="setupNotice" class="setup-page hidden">
+        <div class="setup-icon" aria-hidden="true">↗</div>
+        <p class="eyebrow">Setup required</p>
+        <h2>保存先を設定してください</h2>
+        <p>
+          スクラップに保存するには、My Todo App のアプリケーションURLとDeveloper APIキーが必要です。
+        </p>
+        <button id="setupButton" class="primary-button setup-primary" type="button">設定を開く</button>
+      </section>
+
+      <form id="scrapForm" class="composer" novalidate>
+        <div class="input-stack">
+          <label class="sr-only" for="title">URL</label>
+          <input id="title" name="title" type="text" maxlength="500" placeholder="現在のページURL" autocomplete="off" readonly />
+
+          <div id="maybeScrap" class="maybe-scrap hidden"></div>
+
+          <label class="sr-only" for="comment">本文 / コメント</label>
+          <textarea id="comment" name="comment" maxlength="20000" placeholder="本文やコメントを追加"></textarea>
+
+          <div class="url-preview">
+            <span class="url-icon" aria-hidden="true">↗</span>
+            <span id="sourceUrl" class="source-url">現在のページURLを取得しています...</span>
+          </div>
+
+          <div id="imagePreview" class="image-preview hidden"></div>
+
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <label class="attach-button" for="images" title="画像を添付">
+                <span aria-hidden="true">📎</span>
+                <span class="sr-only">画像を添付</span>
+              </label>
+              <span id="imageCount" class="hint">最大4枚</span>
+              <input id="images" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/avif,image/heic,image/heif" multiple />
+            </div>
+            <button id="saveButton" class="primary-button" type="submit">保存</button>
+          </div>
+        </div>
+
+        <label class="private-row" for="isPrivate">
+          <input id="isPrivate" type="checkbox" />
+          <span>
+            <strong>非公開にする</strong>
+            <small>未ログインの公開表示から除外されます。</small>
+          </span>
+        </label>
+      </form>
+
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
